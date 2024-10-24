@@ -1,6 +1,8 @@
 import numpy as np
 
+from IMAA2150.CubicSplines import CubicSplines
 from IMAA2150.PowerIteration import PowerIteration
+from IMAA2150.util.Grapher import Grapher
 
 
 def power_iteration():
@@ -15,8 +17,23 @@ def power_iteration():
     print(eigenvalue, eigenvector)
 
 
-def main():
+def qubic_splines():
+    knots = [
+        [1, 2],
+        [2, 4],
+        [3, -5],
+        [4, 0],
+        [5, 2],
+        [7, -1],
+        [8, 6]
+    ]
+    cs = CubicSplines(knots)
+    grapher = Grapher()
+    grapher.graph_cubic_spline(cs.coef(), knots)
 
+
+def main():
+    qubic_splines()
 
 
 if __name__ == '__main__':
