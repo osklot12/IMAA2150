@@ -1,9 +1,9 @@
 import numpy as np
 
+from IMAA2150.Bisection import Bisection
 from IMAA2150.CubicSplines import CubicSplines
 from IMAA2150.PowerIteration import PowerIteration
 from IMAA2150.util.Grapher import Grapher
-
 
 def power_iteration():
     A = np.array([
@@ -25,11 +25,22 @@ def qubic_splines():
         [4, 0],
         [5, 2],
         [7, -1],
-        [8, 6]
+        [8, 6],
+        [9, -2]
     ]
     cs = CubicSplines(knots)
     grapher = Grapher()
     grapher.graph_cubic_spline(cs.coef(), knots)
+
+
+def bisection():
+    f = lambda x: np.cos(x)**2 + 6 - x
+    tol = 0.5e-10
+    a = 6
+    b = 7
+
+    bi = Bisection(f)
+    print(bi.run_bisection_method(a, b, tol))
 
 
 def main():
